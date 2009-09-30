@@ -1,0 +1,24 @@
+<h1>New project</h1>
+
+<% form_for(@project) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+      <%= f.render_associated_form(@project.tasks, :new => 1) %>
+  </p>
+  <div id="tasks">
+  </div>
+  <p>
+    <%= f.add_associated_link "Add New Task", @project.tasks.build %>
+  </p>
+
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', projects_path %>
